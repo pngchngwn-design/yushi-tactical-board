@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>于氏珠宝足球队专用战术板</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 顶部栏 -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">于</div>
+    <div>
+      <h1>于氏珠宝足球队专用战术板</h1>
+      <p class="brand-sub">赛前排兵布阵 · 阵型智库 · 对手盯防推演</p>
+    </div>
+  </div>
+  <div class="format-switch" id="formatSwitch">
+    <button data-fmt="five">五人制</button>
+    <button data-fmt="eight" class="active">八人制</button>
+    <button data-fmt="eleven">十一人制</button>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- 左栏：队员池 + 对手情报 -->
+  <aside class="sidebar left-panel">
+    <section class="panel">
+      <h2 class="panel-title">队员池 <span class="hint">拖头像上场</span></h2>
+      <div class="pool" id="pool"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title">对手情报 <span class="hint">自动保存</span></h2>
+      <div class="intel-form">
+        <label>对手队名<input id="intelName" placeholder="例如：兄弟连"></label>
+        <label>对方核心 / 必须限制的人<input id="intelKey" placeholder="号码+特点，如：10号 左脚远射"></label>
+        <label>对方常用战术<textarea id="intelTactic" rows="2" placeholder="如：长传冲吊打身后 / 边路下底传中"></textarea></label>
+        <label>我方对策与盯防安排<textarea id="intelPlan" rows="3" placeholder="如：后腰专人贴身10号，中卫上抢第一点"></textarea></label>
+      </div>
+    </section>
+  </aside>
+
+  <!-- 中间：球场 -->
+  <main class="pitch-wrap">
+    <div class="toolbar">
+      <button class="tool-btn" id="btnJitter" title="在当前阵型基础上随机微调站位">随机微调</button>
+      <button class="tool-btn" id="btnMark">+ 对方红标</button>
+      <button class="tool-btn" id="btnReset">复位阵型</button>
+      <button class="tool-btn" id="btnClear">清空球场</button>
+      <button class="tool-btn primary" id="btnExport">导出图片发群</button>
+      <button class="tool-btn" id="btnPrint">打印</button>
+    </div>
+
+    <div class="pitch-frame">
+      <div class="pitch" id="pitch">
+        <!-- 球场线条（SVG） -->
+        <svg class="pitch-lines" viewBox="0 0 100 140" preserveAspectRatio="none">
+          <rect x="1" y="1" width="98" height="138" fill="none" class="ln"/>
+          <line x1="1" y1="70" x2="99" y2="70" class="ln"/>
+          <circle cx="50" cy="70" r="10.5" fill="none" class="ln"/>
+          <circle cx="50" cy="70" r="0.6" class="dot"/>
+          <rect x="24" y="1" width="52" height="14" fill="none" class="ln"/>
+          <rect x="37" y="1" width="26" height="5.5" fill="none" class="ln"/>
+          <circle cx="50" cy="10" r="0.6" class="dot"/>
+          <path d="M 40 15 A 11 11 0 0 0 60 15" fill="none" class="ln"/>
+          <rect x="24" y="125" width="52" height="14" fill="none" class="ln"/>
+          <rect x="37" y="133.5" width="26" height="5.5" fill="none" class="ln"/>
+          <circle cx="50" cy="130" r="0.6" class="dot"/>
+          <path d="M 40 125 A 11 11 0 0 1 60 125" fill="none" class="ln"/>
+          <path d="M 1 4 A 3 3 0 0 0 4 1" fill="none" class="ln"/>
+          <path d="M 96 1 A 3 3 0 0 0 99 4" fill="none" class="ln"/>
+          <path d="M 4 139 A 3 3 0 0 0 1 136" fill="none" class="ln"/>
+          <path d="M 99 136 A 3 3 0 0 0 96 139" fill="none" class="ln"/>
+        </svg>
+        <div class="goal-label top">对方球门</div>
+        <div class="goal-label bottom">我方球门</div>
+        <div id="slots"></div>
+        <div id="marks"></div>
+      </div>
+    </div>
+    <p class="pitch-tip">操作：从左侧拖队员头像到位置圈 → 按住位置圈可拖动微调站位 → 双击场上队员撤下 → 点阵法名查看战术详解</p>
+  </main>
+
+  <!-- 右栏：阵型智库 -->
+  <aside class="sidebar right-panel">
+    <section class="panel grow">
+      <h2 class="panel-title">阵型智库 <span class="hint" id="formationCount"></span></h2>
+      <div class="formation-list" id="formationList"></div>
+      <div class="formation-detail" id="formationDetail">
+        <p class="empty">点击上方任意阵型，查看优缺点、适用球队、五大联赛代表与针对打法。</p>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<script src="js/images.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
