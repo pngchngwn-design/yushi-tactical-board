@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>于氏珠宝足球队 · 赛事管理</title>
+<link rel="stylesheet" href="css/tournament.css">
+</head>
+<body>
+
+<!-- 顶部栏 -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">于</div>
+    <div>
+      <h1>赛事管理 · 分队 / 赛程 / 比分</h1>
+      <p class="brand-sub">录入人员 → 自动分队 → 生成赛程 → 录入比分 → 自动算积分榜与对阵图</p>
+    </div>
+  </div>
+  <div class="topnav">
+    <a class="nav-link" href="index.html">← 返回战术板</a>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- 左栏：赛事列表 -->
+  <aside class="list-col">
+    <div id="tourList"></div>
+  </aside>
+
+  <!-- 右栏：主编辑区 -->
+  <main class="main-col">
+    <div id="mainPanel"></div>
+  </main>
+</div>
+
+<script src="js/tournament.js"></script>
+</body>
+</html>
